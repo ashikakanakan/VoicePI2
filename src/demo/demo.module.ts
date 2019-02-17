@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DemoComponent } from './demo.component';
 import { MainComponent } from './components';
-
+import { HttpClientModule } from "@angular/common/http";
 import { SubModule } from '../demo/sub';
 import { SpeechRecognitionModule } from '../../projects/ngx-speech-recognition/src/public_api';
 
@@ -25,11 +25,12 @@ import { SpeechRecognitionModule } from '../../projects/ngx-speech-recognition/s
     BrowserModule,
     CommonModule,
     RouterModule,
+    HttpClientModule,
     // load with configs.
     //
     // 設定を渡してSpeechRecognitionServiceをつくる。
     SpeechRecognitionModule.withConfig({
-      lang: 'ja',
+      lang: 'en',
 
       interimResults: true,
       maxAlternatives: 10,
