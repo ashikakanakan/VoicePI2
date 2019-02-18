@@ -1,13 +1,12 @@
 <div class="speak">
-    <div class="head-desc" (click)="clickSpeak=true;">Voice PI recognize based on the speech whether it's a wakeup call or a request 
+    <div class="head-desc" (click)="clickSpeak=true;wakeWord=false;enrollWord=false">Voice PI recognize based on the speech whether it's a wakeup call or a request 
         for Enrollment</div> 
-    
 </div>
 
 <div class="speaks" *ngIf="clickSpeak">
     <div class="dull-state" *ngIf="!started">
         <p class="sub-head">Click and Speak!!!</p>
-        <img class="img-height" (click)="start()" src="../assets/speaker-dull.png">
+        <img class="img-height" (click)="start(5)" src="../assets/speaker-dull.png">
     </div>
     <div class="speak-state" *ngIf="started">
         <p class="sub-head">Processing...</p>
@@ -18,7 +17,7 @@
     </div>
     
 </div>
-<div class="wake row" style="display: -webkit-inline-box;">
+<div class="wake row" *ngIf="wakeWord" style="display: -webkit-inline-box;">
     <div class="col">
         <img src="../assets/robot.gif">
     </div>
@@ -27,12 +26,19 @@
         <p class="chat-box">Comments from VOICE PI</p>
     </div>
 </div>
-<div class="enroll" style="display: -webkit-inline-box;">
+<div class="enroll" *ngIf="enrollWord" style="display: -webkit-inline-box;">
     <div class="dull-state" *ngIf="!started" style="padding: 0px 60px;">
             <p class="sub-head">Click and Speak!!!</p>
-            <img class="img-height" src="../assets/speaker-dull.png">
+            <img class="img-height" (click)="start(30)" src="../assets/speaker-dull.png">
         </div>
-    <div class="login log-form" *ngIf="!isIE">
+        <div class="speak-state" *ngIf="started">
+                <p class="sub-head">Processing...</p>
+                <img class="img-height" (click)="stop()" src="../assets/speaker-speaks.gif">
+                <span class="messages">
+                        {{message}}
+                </span>
+            </div>
+    <div class="login log-form">
         <div class="row form-section">
                 <div class="form-field">
                     <p>
@@ -60,5 +66,14 @@
                 </div>
                 <button class="login-button" kendoButton (click)="enroll()">Enorll</button>
         </div>
+    </div>
+    <div class="read-me">
+        <p class="para-title">Read Me</p>
+        <p class="para">You should include the enrollment audio file in the request body. 
+            The audio file should be at least 5 seconds long and no longer than 5 minutes. The minimum recommended amount of accumulated speech for enrollment, after removing silence, is 30 seconds. After accumulating 30 seconds of speech, the profile’s enrollment status is changed from enrolling to enrolled to indicate that it is ready for identification.
+            In the case you wish to enroll using any amount of speech time, you should include the "shortAudio" parameter. It instructs the service to waive the recommended amount of audio limit needed for enrollment and accordingly the profile’s enrollment status is changed from enrolling to enrolled. 
+            When doing so you can send audio files starting 1-second-long but no longer than 5 minutes.
+            Enrollment for speaker identification is text-independent, which means that there are no restrictions on what the speaker says in the audio. The speaker's voice is recorded, and a number of features are extracted to form a unique voiceprint.
+        </p>
     </div>
 </div>

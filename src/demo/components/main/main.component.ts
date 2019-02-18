@@ -38,24 +38,39 @@ export class MainComponent {
       this.fullMessage = this.fullMessage + this.message;
       if(this.message.indexOf("wake") > -1) {
         console.log("WAKE FOUND")
+        this.wakeWord = true;
+        this.enrollWord = false;
+        this.clickSpeak = false;
         this.stop();
       }
       if(this.message.indexOf("enroll") > -1) {
         console.log("ENROLL FOUND")
+        this.wakeWord = false;
+        this.enrollWord = true;
+        this.clickSpeak = false;
         this.stop();
       }
     };
   }
 
-  public start() : void {
+  public start(time) : void {
     this.started = true;
     this.service.start();
     console.log("started")
     //this.callVoicePI();
-    setTimeout(()=>{
-      this.stop();
-      console.log("after 5s")
-    }, 5000)
+    console.log(time);
+    if(time==5) {
+      setTimeout(()=>{
+        this.stop();
+        console.log("after 5s")
+      }, 5000)
+    }
+    else {
+      setTimeout(()=>{
+        this.stop();
+        console.log("after 35s")
+      }, 35000)
+    }
   }
 
   public stop() : void {
