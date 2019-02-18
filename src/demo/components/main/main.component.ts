@@ -77,4 +77,7 @@ export class MainComponent {
   // console.log(this.serverData);
   // })
   }
+  public enroll() {
+    console.log("enrolled")
+  }
 }

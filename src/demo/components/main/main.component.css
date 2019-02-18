@@ -26,3 +26,49 @@
     padding: 5px 0px;
     text-align: center;
 }
+
+.chat-box {
+    border: 2px solid #778D9A;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 1);
+    font-size: 21px;
+    color: #535185;;
+}
+
+.form-section {
+    display: -webkit-inline-box;
+    /* padding: 10px 20px; */
+    padding-top: 20%;
+}
+
+.form-field {
+    padding: 10px 30px;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #777;
+}
+
+.login-button {
+    margin: 55px 10px;
+    padding: 5px 5px;
+}
+
+.user-name {
+    width: 100%;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.heighttext {
+    height: 20px;
+}

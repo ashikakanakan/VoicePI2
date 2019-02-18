@@ -1,9 +1,4 @@
 <div class="speak">
-    <!-- <p>MainCompoent.message: {{message}}</p> -->
-    <!-- <button (click)="start()">start</button>
-    <button [disabled]="!started" (click)="stop()">end</button> -->
-    <!-- <p>lang: English</p>
-    <p>grammars: none</p> -->
     <div class="head-desc" (click)="clickSpeak=true;">Voice PI recognize based on the speech whether it's a wakeup call or a request 
         for Enrollment</div> 
     
@@ -28,8 +23,42 @@
         <img src="../assets/robot.gif">
     </div>
 
-    <div class="col-4" style="padding-top: 25%;">
-        <p>Comments from VOICE PI</p>
+    <div class="col-4" style="padding-top: 20%;">
+        <p class="chat-box">Comments from VOICE PI</p>
     </div>
 </div>
-
+<div class="enroll" style="display: -webkit-inline-box;">
+    <div class="dull-state" *ngIf="!started" style="padding: 0px 60px;">
+            <p class="sub-head">Click and Speak!!!</p>
+            <img class="img-height" src="../assets/speaker-dull.png">
+        </div>
+    <div class="login log-form" *ngIf="!isIE">
+        <div class="row form-section">
+                <div class="form-field">
+                    <p>
+                        Full Name
+                    </p>
+                    <div class="user-name">
+                        <input class="heighttext" formControlName="userName" kendoTextBox placeholder="Enter User Name"/>
+                    </div>
+                </div>
+                <div class="form-field">
+                        <p>
+                            Email ID
+                        </p>
+                        <div class="user-name">
+                            <input class="heighttext" formControlName="userName" kendoTextBox placeholder="Enter Email ID"/>
+                        </div>
+                    </div>
+                <div class="form-field">
+                    <p>
+                        PASSWORD
+                    </p>
+                    <div class="user-name">
+                        <input class="heighttext" kendoTextBox type="password" formControlName="password" kendoTextBox placeholder="Enter Password"/>
+                    </div>
+                </div>
+                <button class="login-button" kendoButton (click)="enroll()">Enorll</button>
+        </div>
+    </div>
+</div>
