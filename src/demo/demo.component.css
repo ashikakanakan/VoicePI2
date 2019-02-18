@@ -1,8 +1,8 @@
-* {
+/* * {
   margin: 0;
-}
+} */
 
-:host {
+/* :host {
   display: flex;
   width: 100vw;
   flex-direction: column;
@@ -10,4 +10,17 @@
 
 :host * {
   border: solid 1px black;
+} */
+
+.title {
+  text-align: center;
+  color: RED;
+  font-size: 45px;
+  text-shadow: 0 4px 4px rgba(0,0,0,.25);
+}
+
+.logo{
+  width: 5%;
+  float: right;
+  border-radius: 20px;
 }

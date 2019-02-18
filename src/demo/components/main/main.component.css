@@ -1,0 +1,28 @@
+.img-height {
+    height: 200px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.sub-head {
+    font-size: 30px;
+    color: #535185;
+    padding-left: 20px;
+}
+
+.speaks {
+    padding: 0px 60px;
+}
+
+.messages {
+    color: #535185;
+    font-size: 18px;
+    padding: 0px 20px;
+}
+
+.head-desc {
+    color: #568ED9;
+    font-size: 24px;
+    padding: 5px 0px;
+    text-align: center;
+}

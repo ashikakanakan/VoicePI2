@@ -1,5 +1,35 @@
-<p>MainCompoent.message: {{message}}</p>
-<button [disabled]="started" (click)="start()">start</button>
-<button [disabled]="!started" (click)="stop()">end</button>
-<!-- <p>lang: English</p>
-<p>grammars: none</p> -->
+<div class="speak">
+    <!-- <p>MainCompoent.message: {{message}}</p> -->
+    <!-- <button (click)="start()">start</button>
+    <button [disabled]="!started" (click)="stop()">end</button> -->
+    <!-- <p>lang: English</p>
+    <p>grammars: none</p> -->
+    <div class="head-desc" (click)="clickSpeak=true;">Voice PI recognize based on the speech whether it's a wakeup call or a request 
+        for Enrollment</div> 
+    
+</div>
+
+<div class="speaks" *ngIf="clickSpeak">
+    <div class="dull-state" *ngIf="!started">
+        <p class="sub-head">Click and Speak!!!</p>
+        <img class="img-height" (click)="start()" src="../assets/speaker-dull.png">
+    </div>
+    <div class="speak-state" *ngIf="started">
+        <p class="sub-head">Processing...</p>
+        <img class="img-height" (click)="stop()" src="../assets/speaker-speaks.gif">
+        <span class="messages">
+                {{message}}
+        </span>
+    </div>
+    
+</div>
+<div class="wake row" style="display: -webkit-inline-box;">
+    <div class="col">
+        <img src="../assets/robot.gif">
+    </div>
+
+    <div class="col-4" style="padding-top: 25%;">
+        <p>Comments from VOICE PI</p>
+    </div>
+</div>
+

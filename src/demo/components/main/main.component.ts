@@ -15,9 +15,13 @@ import { HttpClient } from '@angular/common/http';
 export class MainComponent {
 
   public started = false;
+  public wakeWord = false;
+  public enrollWord = false;
+  public clickSpeak = true;
   serverData: JSON;
 
   public message = '';
+  public fullMessage = ''
 
   constructor(
     private service: SpeechRecognitionService,
@@ -31,27 +35,35 @@ export class MainComponent {
     };
     this.service.onresult = (e) => {
       this.message = e.results[0].item(0).transcript;
+      this.fullMessage = this.fullMessage + this.message;
       if(this.message.indexOf("wake") > -1) {
         console.log("WAKE FOUND")
-        stop();
+        this.stop();
       }
       if(this.message.indexOf("enroll") > -1) {
         console.log("ENROLL FOUND")
-        stop();
+        this.stop();
       }
     };
   }
 
-  start() {
+  public start() : void {
     this.started = true;
     this.service.start();
-    this.callVoicePI();
+    console.log("started")
+    //this.callVoicePI();
+    setTimeout(()=>{
+      this.stop();
+      console.log("after 5s")
+    }, 5000)
   }
 
-  stop() {
+  public stop() : void {
     this.started = false;
     this.service.stop();
     console.log(this.message);
+    this.message = "";
+    console.log(this.fullMessage);
     this.callVoicePI();
   }
 
@@ -59,10 +71,10 @@ export class MainComponent {
 
   
  public callVoicePI() {
-   
-  this.httpClient.get('http://10.0.1.159:5002/').subscribe(data => {
-  this.serverData = data as JSON;
-  console.log(this.serverData);
-  })
+   console.log("API called")
+  // this.httpClient.get('http://10.0.1.159:5002/').subscribe(data => {
+  // this.serverData = data as JSON;
+  // console.log(this.serverData);
+  // })
   }
 }
